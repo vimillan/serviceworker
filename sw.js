@@ -14,9 +14,7 @@ self.addEventListener("fetch", (event) => {
 
   // Cambia los estilos desde el Service Worker
   if (event.request.url.includes("style.css")) {
-    // Imprime solo los archivos con extención css
     console.log(INIT_MSG, event.request.url);
-    // Crea una respuesta y retornala
     const resp = new Response(
       `
         h5 {
@@ -29,16 +27,12 @@ self.addEventListener("fetch", (event) => {
         },
       }
     );
-    // En el mismo evento, responde con una respuesta personalizada
     event.respondWith(resp);
   }
 
   if (event.request.url.includes("pink.png")) {
-    // Imprime solo los archivos con extención css
     console.log(INIT_MSG, event.request.url);
-    // Crea una respuesta y retornala
     let foto = fetch('images/red.jpg')
-    // En el mismo evento, responde con una respuesta personalizada
     event.respondWith(foto);
   }
 });
